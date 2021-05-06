@@ -187,6 +187,8 @@ final class MessageTrackerImpl {
     }
     
     func endedHistoryBatch() {
+        messageListener?.historyUpdated()
+        
         guard firstHistoryUpdateReceived != true else {
             return
         }

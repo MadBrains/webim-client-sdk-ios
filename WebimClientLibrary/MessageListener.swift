@@ -37,6 +37,9 @@ import Foundation
  */
 public protocol MessageListener: class {
     
+    // Called when history is updated. Возможно, это костыль
+    func historyUpdated()
+    
     /**
      Called when added a new message.
      If `previousMessage == nil` then it should be added to the end of message history (the lowest message is added), in other cases the message should be inserted before the message (i.e. above in history) which was given as a parameter `previousMessage`.
