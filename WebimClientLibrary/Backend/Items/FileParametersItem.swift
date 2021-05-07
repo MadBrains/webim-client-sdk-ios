@@ -81,11 +81,18 @@ final class FileParametersItem {
     }
     
     func getGUID() -> String? {
-        return guid
+        let randomString = UUID().uuidString.replacingOccurrences(of: "-", with: "")
+        return guid ?? randomString
     }
     
     func getContentType() -> String? {
-        return contentType
+        guard let name = filename else {
+            return contentType
+        }
+        
+        let filename = NSString(string: name)
+        let pathExtension = filename.pathExtension
+        return contentType ?? pathExtension
     }
     
     func getFilename() -> String? {
